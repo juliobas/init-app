@@ -1,5 +1,3 @@
-import './bootstrap'
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
@@ -11,8 +9,13 @@ import Register from './pages/auth/Register.vue';
 import Login from './pages/auth/Login.vue';
 import NotFound from './pages/app/NotFound.vue';
 
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(Vuetify);
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+
 axios.defaults.baseURL = 'http://localhost/api';
 
 const router = new VueRouter({
@@ -48,6 +51,7 @@ const router = new VueRouter({
         component: NotFound 
     }]
 });
+
 Vue.router = router
 Vue.use(require('@websanova/vue-auth'), {
    auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),

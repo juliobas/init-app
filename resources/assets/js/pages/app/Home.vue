@@ -1,14 +1,9 @@
 <template>
-    <div class="row">
-    	<div class="col-md-8 col-md-offset-2">
-    		<div class="panel panel-default">
-	            <div class="panel-heading">
-	                <h1>Laravel 5 Vue SPA Authentication</h1>
-	            </div>
-	            <div class="panel-body">
-	                
-	            </div>
-        	</div>
-    	</div>
-    </div>
+	<v-container fluid>
+		<v-layout column>
+			<v-flex xs12 class="text-xs-center" mt-5>
+				<h1>Laravel 5 Vue SPA Authentication</h1>
+			</v-flex>
+		</v-layout>
+	</v-container>
 </template>

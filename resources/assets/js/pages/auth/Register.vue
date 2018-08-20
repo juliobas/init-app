@@ -1,41 +1,59 @@
 <template>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h1>Registrar</h1>
+    <v-container fluid>
+        <v-layout row wrap>
+            <v-flex xs12 class="text-xs-center" mt-5>
+                <h1>Registro</h1>
+            </v-flex>
+            <v-flex xs12 sm6 offset-sm3 mt-3>
+                <div v-if="success">
+                    <p>Registro Completado. Puedes Ahora <router-link :to="{name:'login'}">Entrar.</router-link></p>
                 </div>
-                <div class="panel-body">
-                    <div>
-                        <div class="alert alert-danger" v-if="error && !success">
-                            <p>Hubo un Error, No se Pudo Completar el Registro.</p>
-                        </div>
-                        <div class="alert alert-success" v-if="success">
-                            <p>Registro Completado. Puedes Ahora <router-link :to="{name:'login'}">Entrar.</router-link></p>
-                        </div>
-                        <form autocomplete="off" @submit.prevent="register" v-if="!success" method="post">
-                            <div class="form-group" v-bind:class="{ 'has-error': error && errors.name }">
-                                <label for="name">Nombre</label>
-                                <input type="text" id="name" class="form-control" v-model="name" required>
-                                <span class="help-block" v-if="error && errors.name">{{ errors.name }}</span>
-                            </div>
-                            <div class="form-group" v-bind:class="{ 'has-error': error && errors.email }">
-                                <label for="email">Correo</label>
-                                <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
-                                <span class="help-block" v-if="error && errors.email">{{ errors.email }}</span>
-                            </div>
-                            <div class="form-group" v-bind:class="{ 'has-error': error && errors.password }">
-                                <label for="password">Contraseña</label>
-                                <input type="password" id="password" class="form-control" v-model="password" required>
-                                <span class="help-block" v-if="error && errors.password">{{ errors.password }}</span>
-                            </div>
-                            <button type="submit" class="btn btn-default">Guardar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <form autocomplete="off" @submit.prevent="register" v-if="!success">
+                    <v-layout column>
+                        <v-flex>
+                            <v-text-field
+                                name="name"
+                                label="Nombre"
+                                id="name"
+                                type="text"
+                                required
+                                v-model="name"></v-text-field>
+                        </v-flex>
+                        <v-flex>
+                            <v-text-field
+                                name="email"
+                                label="Correo"
+                                id="email"
+                                type="email"
+                                required
+                                v-model="email"></v-text-field>
+                        </v-flex>
+                        <v-flex>
+                            <v-text-field
+                                name="password"
+                                label="Contraseña"
+                                id="password"
+                                type="password"
+                                required
+                                v-model="password"></v-text-field>
+                        </v-flex>
+                        <!-- <v-flex>
+                            <v-text-field
+                                name="confirmPassword"
+                                label="Confirm Password"
+                                id="confirmPassword"
+                                type="password"
+                                required
+                                ></v-text-field>
+                        </v-flex> -->
+                        <v-flex class="text-xs-center" mt-5>
+                            <v-btn color="primary" type="submit">Registrar</v-btn>
+                        </v-flex>
+                    </v-layout>
+                </form>
+            </v-flex>
+        </v-layout>
+    </v-container>
     
 </template>
 <script> 
